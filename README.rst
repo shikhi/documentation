@@ -69,6 +69,7 @@ The openSUSE way
  sudo zypper in texlive-threeparttable
  sudo zypper in texlive-wrapfig
  sudo zypper in texlive-multirow
+ sudo zypper in python-sphinxcontrib-phpdomain
  cd user_manual
  make latexpdf
  okular _build/latex/ownCloudUserManual.pdf
