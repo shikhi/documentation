@@ -26,6 +26,8 @@ For PHP documentation you'll need to get the according language
 domain package. The documenation for PHP source is located at
 http://packages.python.org/sphinxcontrib-phpdomain/reference.html
 
+The authoring style guide is in CONTRIBUTING.rst in section Writing Style.
+
 Manuals
 -------
 
