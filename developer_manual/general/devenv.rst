@@ -48,18 +48,25 @@ The following commands are using **/var/www** as the web server's directory and 
 
 Install the development tool (**depends on Python 3 and python3-pip**)::
 
-  sudo pip3 install ocdev
+   sudo pip3 install ocdev
+
+.. ocdev fails with python2.7 and python3, unsure what it was supposed to do. (jw)
 
 Make the directory writable::
 
   sudo chmod o+rw /var/www
   
-Then install ownCloud from git::
+.. Then install ownCloud from git::
+.. 
+..   ocdev setup base
 
-  ocdev setup base
+  cd /var/www
+  git clone git@github.com:owncloud/core.git
+  git submodule update --init
 
 Adjust rights::
 
+  sudo mkdir -p /var/www/core/data/
   sudo chown -R www-data:www-data /var/www/core/data/
   sudo chmod o-rw /var/www
 
@@ -80,9 +87,27 @@ Enabling debug mode
 
 .. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
 
-To disable JavaScript and CSS caching debugging has to be enabled in :file:`core/config/config.php` by adding this to the end of the file::
+To disable JavaScript and CSS caching the option DEBUG has to be added to the end of the :file:`core/config/config.php` file. Several other options exist and can be by placed inside the $CONFIG array.
 
+::
+
+   'loglevel' => '0',
+   'logquery' => true,
+   'cron_log' => true,
+   'apps_paths' => array(
+     array('path'=>'/var/www/core/apps',  'url'=>'/apps',  'writable'=>true),
+     array('path'=>'/var/www/core/apps1', 'url'=>'/apps1', 'writable'=>true),
+   ),
+  }
   DEFINE('DEBUG', true);
+
+The additional apps1 shown above allows us to checkout the apps.git repo 
+like this::
+
+  cd /var/www/core/
+  git clone git@github.com:owncloud/apps.git apps1
+
+More configuration ideas can be seen in :file:`core/config/config.sample.php`
 
 .. _GitHub: https://github.com/owncloud
 .. _GitHub Help Page: https://help.github.com/
