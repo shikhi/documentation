@@ -1,53 +1,50 @@
 Synchronizing with KDE SC
 =========================
 
+Using KDE SC 4.8 (and later), setting up ownCloud is very easy. 
+
 .. image:: /images/kdes1.png
 
-From KDE SC 4.8 and forward setting up ownCloud is very easy. From System
-Settings Personal Information/Akonadi Resources Configuration select DAV
-Groupware resource.
+To synchronize with KDE SC:
 
+1. From System Settings Personal Information/Akonadi Resources Configuration 
+   select DAV Groupware resource.
 
-.. image:: ../images/kdes2.png
+   .. image:: ../images/kdes2.png
 
-Enter your ownCloud username and password and click "Next".
+2. Enter your ownCloud username and password and click "Next".
 
+   .. image:: ../images/kdes3.png
+   
+3. Select ``ownCloud`` from the dropdown menu and click "Next".
 
-.. image:: ../images/kdes3.png
+   .. image:: ../images/kdes4.png
 
-Select ownCloud in the drop down list and click "Next".
+4. Enter the host name and installation path. 
 
+   .. note:: If you do not use SSL, remember to de-select "Use secure connection".
 
+   .. image:: ../images/kdes5.png
 
-.. image:: ../images/kdes4.png
+5. Test the connection.
 
-Enter the host name and installation path. If you do not use SSL
-remember to de-select "Use secure connection".
+   A message appears like the one below.
 
+  .. image:: ../images/kdes6.png
 
-.. image:: ../images/kdes5.png
+6. Click "Finish". 
 
-Test the connection. If everything went well you should see a message
-like the one below.
+   You can change the display name and refresh interval.
 
+   .. image:: ../images/kdes7.png
 
-.. image:: ../images/kdes6.png
+   The Akonadi resource performs the first synchronization.
 
-Click "Finish" and you will be able to change the display name and
-refresh interval.
+   ..  missing
+   ..  .. image:: ../images/kdes8.png
 
-
-.. image:: ../images/kdes7.png
-
-Now you should see the Akonadi resource doing the first
-synchronization.
-
-..  missing
-..  .. image:: ../images/kdes8.png
-
-You can find the Contacts and Calendars in Kontact (or
-KOrganizer/KAddressbook if you run the programs separately.)
-
+You can find the Contacts and Calendars in Kontact (or KOrganizer/KAddressbook 
+if you run the programs separately.)
 
 .. image:: ../images/kdes9.png
 

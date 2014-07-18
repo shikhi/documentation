@@ -1,30 +1,28 @@
 Troubleshooting
 ===============
 
-Debugging the issue
--------------------
+Debugging an Issue
+------------------
 
-In a standard ownCloud installation the log level is set to "Normal". to find any issues
-you need to raise the log level to "All" from the Admin page.
-Some logging - for example JavaScript console logging - needs manually editing the
-configuration file.
-Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
+In a standard ownCloud installation the log level is set to "Normal". However, to troubleshoot any issues you might need to raise the log level to "All" from the Admin page.
+
+Some logging (for example, JavaScript console logging) requires manually editing the
+configuration file. For this type of logging, open :file:`config/config.php` in a text editor and add ``define('DEBUG', true);``.  For example::
 
     <?php
     define('DEBUG',true);
     $CONFIG = array (
-        ... configuration goes here ...
+        define('DEBUG', true);
     );
 
-For JavaScript issues you will also need to view the javascript console. All major browsers
-have decent developer tools for viewing the console, and you usually access them by
-pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
+For JavaScript issues you must also view the JavaScript console. All major browsers
+provide developer tools for viewing the console, and you usually access them by
+pressing F12. For Firefox, we recommend installing the `Firebug extension <https://getfirebug.com/>`_.
 
-Service discovery
+Service Discovery
 -----------------
 
-Some clients - especially iOS - have problems finding the proper sync URL, even when explicitly
-configured to use it.
+Some clients (especially iOS) have problems finding the proper synchronization URL, even when explicitly configured to use it.
 
 There are several techniques to remedy this, which are described extensively at the
 `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
@@ -32,30 +30,27 @@ There are several techniques to remedy this, which are described extensively at 
 Apple iOS
 `````````
 
-Below is what have proven to work with iOS including iOS 7.
+.. note:: The following has been tested using iOS (including iOS 7).
 
-If your ownCloud instance is installed in a sub-folder under the web servers document root, and
-the client has difficulties finding the Cal- or CardDAV end-points, configure your web server to
-redirect from a "well-know" URL to the one used by ownCloud.
-When using the Apache web server this is easily achieved using a :file:`.htaccess` file in the document
-root of your site.
+If your ownCloud instance is installed in a sub-folder under the web servers document root, and the client has difficulties finding the Cal- or CardDAV end-points:
 
-Say your instance is located in the ``owncloud`` folder, so the URL to it is ``ADDRESS/owncloud``,
-create or edit the :file:`.htaccess` file and add the following lines::
+1. Configure your web server to redirect from a "well-know" URL to the one used by ownCloud. 
+
+  When using the Apache web server, you can redirect using a :file:`.htaccess` file in the document root of your site. For example, say your instance is located in the ``owncloud`` folder, so the URL to it is ``ADDRESS/owncloud``.  To redirect, create or edit the :file:`.htaccess` file and add the following lines::
 
     Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
 
-If you use Nginx as web server, the setting looks something like::
+  When using a Nginx web server, the setting looks similar to the following::
 
     url.redirect = (
         "^/.well-known/carddav" => "/owncloud/remote.php/carddav",
         "^/.well-known/caldav" => "/owncloud/remote.php/caldav",
     )
 
-Now change the URL in the client settings to just use ``ADDRESS`` instead of e.g. ``ADDRESS/remote.php/carddav/principals/username``.
+2. Once you have configured the redirect, change the URL in the client settings to use ``ADDRESS`` instead of ``ADDRESS/remote.php/carddav/principals/username``.
 
-This problem is being discussed in the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
+  .. note:: You can find added information about configuring the redirect in the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
 
 
 BlackBerry OS 10.2
@@ -71,16 +66,14 @@ in the server address field, you have to write
     address/remote.php/carddav/principals/username
 
 
-Unable to update Contacts or Events
------------------------------------
+Updating Contacts or Events
+---------------------------
 
-If you get an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not Implemented`` it is
-likely caused by one of the following reasons:
+If you receive an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not Implemented`` it is likely a result of one of the following:
 
-Outdated lighttpd web server
-  lighttpd in debian wheezy (1.4.31) doesn't support the PATCH HTTP verb.
-  Upgrade to lighttpd >= 1.4.33.
+* Problem: An outdated lighttpd web server -- lighttpd in debian wheezy (1.4.31) does not support the PATCH HTTP verb.
+  Solution: Upgrade to lighttpd greater than or equal to version 1.4.33.
 
-Using Pound reverse-proxy/load balancer
-  As of writing this Pound doesn't support the HTTP/1.1 verb.
-  Pound is easily `patched <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ to support HTTP/1.1.
+* Problem: You are using Pound reverse-proxy/load balancer -- Pound does not currently support the HTTP/1.1 verb.
+  
+  Solution: Install the Pound `patch <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ to support HTTP/1.1.

@@ -1,35 +1,45 @@
-Thunderbird - Synchronize Addressbook
+Synchronizing Thunderbird Address Book
 ======================================
 
-Addressbook
-------------
+This topic describes how to synchronize your ownCloud contacts with the Thunderbird Address Book.
 
-As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail you need to make this work (for all the other lost souls out there):
+These procedures require that you have both Thunderbird and SoGo Connector installed.  You can use the following links locate and install these applications:
 
-#. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
-#. `Sogo Connector <http://www.sogo.nu/english/downloads/frontends.html>`_ (latest release)
+* `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+* `SoGo Connector <http://www.sogo.nu/english/downloads/frontends.html>`_ (latest release)
 
-With an installed Thunderbird mailtool, and installed SoGo Connector:
+With the Thunderbird mail application and SoGo Connector installed, you can synchronize Thunderbird Address Book as follows:
 
-#. Thunderbird Addressbook is in the Thunderbird "Tools" Menu
-#. In the Thunderbird Addressbook application:
+1. Open the Thunderbird Address Book, located in the Thunderbird "Tools" Menu.
 
-   -  "File > New > **Remote Addressbook**" (SoGo Connector added this)
-   -  "**Name:**" is the name you want to give your Addressbook in the Thunderbird addressbook bar area
-   -  "**URL:**" is found in your ownCloud Contacts area, that little Gear symbol
+2. Migrate to File > New > Remote Addressbook 
 
-.. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
+   .. note:: The SoGo Connector application added this option to the menu.
 
-in the -bottom left- of the Contacts View (same symbol as found in the -top right- in the Calendar view). Then look for a little impeller symbol
+3. Specify a name for the address book. This name appears in the Thunderbird addressbook bar.
 
-.. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
+4. Specify the URL located in your ownCloud Contacts area.  To locate the URL:
 
-which will display the URL you need for your installation to work.
+   a. Access the ownCloud Contacts app.
+   
+   b. Locate the gear button and click it to open the Contacts settings.
 
-.. image:: ../images/contact_thunderbird-URL_config.jpg
+      .. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
 
-Once installed, synchronize (right click on your newly made remote addressbook and select "Synchronize"). You'll see your addressbook populate from ownCloud! Don't click "read only" above unless you don't want to modify your ownCloud server addressbook, like it contains a listing of corporate contacts and is shared with lots of people, and you don't want a new user dragging it somewhere unintended.
+   c. Locate and click the impeller symbol.
 
-The rest of the details of dealing with Thunderbird addressbook are left to the reader... First thing I learned is dragging a contact to a different addressbook is a "move" operation. If you are worried about losing the contact, save it to a VCF file using ownCloud (Or LDIF using Thunderbird Addressbook) first! Like dragging from "ownCloud Addressbook" to "Personal Address Book" removes the contact from ownCloud Server (*deleting it from all the other synchronized installations*) and puts it in your Local Machine -only- Addressbook. So be careful or you'll have unintended consequences where you might have intended a "copy" operation.
+      .. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
 
-Contact *Pictures* are also sync'ed!
+      The URL you need for your installation is displayed.
+
+      .. image:: ../images/contact_thunderbird-URL_config.jpg
+
+5. Right-click on your newly created address book and select ``Synchronize`` from the menu.
+
+   The address book populates from ownCloud. 
+	  
+6. (Optional) Specify that the address book is "read only".  The read only setting disallows modifications of the address book in ownCloud.  This includes changes to the contact information as well as the ability to move the address book to another location.
+
+The remaining configuration for the Thunderbird address book is self-explanatory. However, for added information about using the Thunderbird address book (for example, moving contacts from one address book to another), refer to the application documentation.
+
+.. note:: Use caution when moving (dragging and dropping) contacts between address books.  Moving a contact from an ownCloud address book to a personal address book removes the contact from the ownCloud server (and deletes it from all other synchronized connections) and places the contact in your local address book ONLY.  If you are concerned about losing any contacts, we recommend that you save them to a VCF file (or LDIF file using the Thunderbird address book).
