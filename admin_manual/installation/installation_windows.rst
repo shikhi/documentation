@@ -1,4 +1,4 @@
-Windows 7 and Windows Server 2008
+Windows 7, Windows Server 2008 and Windows Server 2012
 ---------------------------------
 
 .. note:: While ownCloud will run in any standard PHP environment,
