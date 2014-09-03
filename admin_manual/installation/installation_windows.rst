@@ -243,6 +243,7 @@ To ensure your configuration is correct:
 8. Ensure that all verbs are permitted (or none are forbidden) in the `Verbs` tab.
 
     .. note:: Because ownCloud must be able to use WebDAV on the application level, you must also ensure that you do not enable the WebDAV authoring module.
+    .. note:: WebDav will require the follwing Verbs "GET, HEAD, POST, OPTIONS, REPORT, PROPFIND, PUT, MKCOL, MKCALENDAR, DELETE, TRACE, COPY, MOVE,PULL" if All Verbs did not work you can enter these verbs . this was tested on Windows Server 2012 R2
 
 
 Configuring ownCloud, PHP and IIS for Large File Uploads
